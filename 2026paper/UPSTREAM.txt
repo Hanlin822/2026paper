@@ -1,9 +1,0 @@
-This directory was initialized by an automated copy operation.
-
-Source: https://github.com/brycewang-stanford/Awesome-Journal-Skills/tree/main/Journal-of-the-American-Chemical-Society-Skills
-
-What I added here:
-- fetch_source.sh : a helper script that clones the source repo and copies the Journal-of-the-American-Chemical-Society-Skills subtree into this repository under /2026paper.
-
-Notes:
-- I can perform a direct file-by-file copy into this repo if you want. I created this helper first so you can review before the full copy (safer). If you want me to proceed and commit every file into /2026paper, reply "copy now" and I'll push all files.
