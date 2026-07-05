@@ -1,0 +1,36 @@
+name: Import JACS source
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  import-jacs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Make fetch script executable
+        run: chmod +x 2026paper/fetch_source.sh
+
+      - name: Run fetch script to copy upstream subtree
+        run: |
+          ./2026paper/fetch_source.sh
+
+      - name: Commit copied files
+        run: |
+          git add 2026paper || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Import Journal-of-the-American-Chemical-Society-Skills into /2026paper"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
